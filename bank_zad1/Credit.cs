@@ -25,6 +25,14 @@ namespace ProstyBank
                 Console.ReadKey();
             }
         }
+        public void repay_credit(decimal credit_all, decimal amount)
+        {
+                Console.WriteLine($"Spłaciłeś: {amount}");
+                Console.WriteLine($"Łączna pozostała kwota kredytu: {credit_all}");
+                Console.WriteLine("Kliknij aby kontynuuować..");
+                Console.ReadKey();
+            
+        }
 
     }
 }

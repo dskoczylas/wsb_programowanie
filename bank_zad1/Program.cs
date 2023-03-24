@@ -51,12 +51,13 @@ namespace ProstyBank
                             {
                                 Console.Clear();
                                 Console.WriteLine("Wybierz opcje:");
-                                Console.WriteLine("1. Informacje o koncie.");
+                                Console.WriteLine("1. Informacje o koncie/kredycie.");
                                 Console.WriteLine("2. Wpłać pieniądze.");
                                 Console.WriteLine("3. Wypłać pieniądze");
                                 Console.WriteLine("4. Historia transakcji");
                                 Console.WriteLine("5. Weź kredyt");
-                                Console.WriteLine("6. Wyjdź");
+                                Console.WriteLine("6. Spłać kredyt");
+                                Console.WriteLine("7. Wyjdź");
                                 if (int.TryParse(Console.ReadLine(), out operation))
                                 {
                                     switch (operation)
@@ -64,6 +65,8 @@ namespace ProstyBank
                                         case 1:
                                             operation = 0;
                                             account_1.DisplayInfo();
+                                            Console.WriteLine($"Kwota kredytu wynosi: {wartosc_kredytu}");
+                                            Console.WriteLine("Kliknij aby kontynuuować..");
                                             Console.ReadKey();
                                             break;
                                         case 2:
@@ -92,6 +95,22 @@ namespace ProstyBank
                                             credit_1.add_credit(wartosc_kredytu, cred_amount);
                                             break;
                                         case 6:
+                                            Console.WriteLine("Jaka kwote kredytu chcesz spłacić?");
+                                            string how_much_credit_repay = Console.ReadLine();
+                                            int cred_amount_repay = int.Parse(how_much_credit_repay);
+
+                                            if (cred_amount_repay > wartosc_kredytu)
+                                            {
+                                                wartosc_kredytu = 0;
+                                            }
+                                            else
+                                            {
+                                                wartosc_kredytu -= cred_amount_repay;
+
+                                            }
+                                            credit_1.repay_credit(wartosc_kredytu, cred_amount_repay);
+                                            break;
+                                        case 7:
                                             choice = 1;
                                             operation = 1;
                                             Console.WriteLine("Do zobaczenia wkrótce!");

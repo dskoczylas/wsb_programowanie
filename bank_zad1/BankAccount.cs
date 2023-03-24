@@ -88,8 +88,6 @@ namespace ProstyBank
             string acc_owner = this.Owner;
             Console.WriteLine($"Stan konta: {stan_konta}");
             Console.WriteLine($"Właściciel: {acc_owner}");
-            Console.WriteLine("Kliknij aby kontynuuować..");
-            Console.ReadKey();
         }
 
     }
